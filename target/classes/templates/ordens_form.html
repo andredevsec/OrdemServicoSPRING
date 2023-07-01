@@ -5,33 +5,51 @@
     <div th:replace="cabecalho :: head"></div>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Crud Manager - Ordens</title>
 </head>
 
 <body>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">Ordem de serviço</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link active" aria-current="page" href="/">Início</a>
+          <a class="nav-link" href="clientes">Clientes</a>
+          <a class="nav-link" href="ordens">Ordem de servço</a>
+          <a class="nav-link" href="produtos">Produtos</a>          
+        </div>
+      </div>
+    </div>
+  </nav>
     <div class="container my-2">
         <h2>Ordens</h2>
-        <form action="#" th:action="@{/ordens/new}" th:object="${ordens}" method="POST">
-            
+        <form action="#" th:action="@{/ordens/new}" th:object="${ordens}" method="POST">         
             
             
            	<input th:field="*{id}" type="hidden" id="id">
             
-             <select th:field="*{cliente}" class="form-select mb-4 col-4">
-                <option th:each="cliente : ${clientes}" th:value="${cliente.id}" th:text="${cliente.name}"></option>
+             <select th:field="*{cliente}" class="form-select mb-4 col-4" id="cliente">
+             	<option th:each="cliente : ${clientes}" th:value="${cliente.id}" th:text="${cliente.name}"></option>
             </select>
             
-             <select th:field="*{produto}" class="form-select mb-4 col-4">
+             <select th:field="*{produto}" class="form-select mb-4 col-4" id="produto">
                 <option th:each="produto : ${produtos}" th:value="${produto.id}" th:text="${produto.name}"></option>
             </select>
             
-            <input type="text" th:field="*{servico}" placeholder="Serviço" class="form-control mb-4 col-4">
+            <span th:if="${#fields.hasErrors('servico')}" th:errors="*{servico}" class="text-danger"></span>
+            <input type="text" th:field="*{servico}" placeholder="Serviço" class="form-control mb-4 col-4" id="servico">
             
             <button type="submit" class="btn btn-info col-2">Salvar</button>
         </form>
         <hr>
         <a th:href="@{/ordens}">Ordens de serviço</a>
     </div>
+    <script src="/js/validacaoOrdem.js"></script>
 </body>
 
 </html>

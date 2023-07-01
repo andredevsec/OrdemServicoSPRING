@@ -1,5 +1,7 @@
 package br.edu.ifsuldeminas.mch.webii.crudmanager.model;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
@@ -11,8 +13,14 @@ public class Produto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id; 
+	
+	@NotBlank(message = "Nome não pode ser vazio")
 	private String name;
+	
+	@NotBlank(message = "Marca não pode ser vazio")
 	private String marca;
+	
+	@NotNull(message = "Numero não pode ser vazio")
 	private Double valor;
 	
 	public Produto () {

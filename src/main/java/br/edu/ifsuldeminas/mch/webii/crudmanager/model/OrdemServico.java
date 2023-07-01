@@ -1,5 +1,9 @@
 package br.edu.ifsuldeminas.mch.webii.crudmanager.model;
 import javax.persistence.Table;
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -14,11 +18,17 @@ public class OrdemServico {
 	private Integer id; 
 	
 	@ManyToOne
-	private Cliente cliente;
-	    
-	@ManyToOne
-	private Produto produto;
-	private String servico;
+    @NotNull(message = "Cliente não pode ser nulo")
+    @Valid
+    private Cliente cliente;
+
+    @ManyToOne
+    @NotNull(message = "Produto não pode ser nulo")
+    @Valid
+    private Produto produto;
+
+    @NotBlank(message = "Serviço não pode ser vazio")
+    private String servico;
 	
 	public OrdemServico () {
 		

@@ -1,5 +1,7 @@
 package br.edu.ifsuldeminas.mch.webii.crudmanager.model;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
@@ -9,10 +11,17 @@ import javax.persistence.GenerationType;
 @Table(name = "clientes")
 public class Cliente {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)	
 	private Integer id; 
+	
+	@NotBlank(message = "Endereço não pode ser vazio")
 	private String name;
+	
+	@NotBlank(message = "Email não pode ser vazio")
+    @Email(message = "Endereço de Email Invalido")
 	private String email;
+	
+	@NotBlank(message = "Endereço não pode ser vazio")
 	private String phone;
 	
 	public Cliente () {

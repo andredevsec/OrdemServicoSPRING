@@ -3,9 +3,12 @@ package br.edu.ifsuldeminas.mch.webii.crudmanager.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,7 +42,11 @@ public class ProdutoController {
 	}
 	
 	@PostMapping("/produtos/new")
-	public String produtoNew(@ModelAttribute("produto") Produto produto) {
+	public String produtoNew(@Valid @ModelAttribute("produto") Produto produto, BindingResult br) {		
+		
+		if(br.hasErrors()) {
+            return "ordens_form";
+        }
 		
 		produtoRepository.save(produto);
 		
