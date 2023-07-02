@@ -11,21 +11,21 @@
 
 <body>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/">Ordem de serviço</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-link active" aria-current="page" href="/">Início</a>
-          <a class="nav-link" href="clientes">Clientes</a>
-          <a class="nav-link" href="ordens">Ordem de servço</a>
-          <a class="nav-link" href="produtos">Produtos</a>          
-        </div>
-      </div>
-    </div>
-  </nav>
+		<div class="container-fluid">
+		  <a class="navbar-brand" href="/">O.S.</a>
+		  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		  </button>
+		  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+			<div class="navbar-nav">
+			  <a class="nav-link active" aria-current="page" href="/">Início</a>
+			  <a class="nav-link" href="/clientes">Clientes</a>
+			  <a class="nav-link" href="/ordens">Ordem de serviço</a>
+			  <a class="nav-link" href="/produtos">Produtos</a>          
+			</div>
+		  </div>
+		</div>
+	  </nav>
     <div class="container my-2">
         <h2>Ordens</h2>
         <form action="#" th:action="@{/ordens/new}" th:object="${ordens}" method="POST">         
