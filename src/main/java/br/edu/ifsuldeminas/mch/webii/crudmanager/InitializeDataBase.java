@@ -45,8 +45,7 @@ public class InitializeDataBase implements CommandLineRunner {
 		produto.setName("Produto A");
 		produto.setMarca("Marca X");
 		produto.setValor(10.5);
-		produtoRepository.save(produto);
-		
+		produtoRepository.save(produto);	
 		
 		OrdemServico ordemServico = new OrdemServico();		
 		ordemServico.setCliente(cliente);
